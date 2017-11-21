@@ -1,0 +1,16 @@
+import sys
+if(sys.argv[1] and sys.argv[2]):
+    try:
+        assert(len(sys.argv)==3)
+        print(int(sys.argv[1])+int(sys.argv[2]))
+    except:
+        print("ERROR")
+else:
+    x=input().split()
+    try:
+        assert(len(x)==2)
+        print(int(x[0])+int(x[1]))
+    except:
+        print("ERROR")
+    else:
+        print("ERROR")
