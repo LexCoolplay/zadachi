@@ -1,0 +1,28 @@
+from yandex_testing_lesson import is_palindrome
+def test():
+    test_data = [
+        ("12321", True),
+        ("1221", True),
+        ("123", False),
+        ("111", True),
+        ("1122", False),
+        ("111", True),
+        ("1", True),
+        ("ada", True),
+        ("aaa", True),
+        ("bacb", False)
+    ]
+    fl=0
+    for a,res in test_data:
+        try:
+            if(is_palindrome(a)== res):
+                fl=1
+            else:
+                raise Exception
+        except Exception:
+            print("NO")
+            fl=0
+            break
+    if(fl==1):
+        print("YES")
+test()
