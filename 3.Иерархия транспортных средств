@@ -1,0 +1,23 @@
+class  Transport:
+  def __init__(self):
+    pass
+class Water_Transport(Transport):
+  pass
+class Flying_Transport(Transport):
+  pass
+class Aviation(Flying_Transport):
+  pass
+class Air_Swiming(Flying_Transport):
+  pass
+class Land_Transport(Transport):
+  pass
+class JELEZNODOROZHNY(Land_Transport):
+  pass
+class AVTOMOBILMIY(Land_Transport):
+  pass
+class VELOSIPEDNIY(Land_Transport):
+  pass
+class DVIJIMIY_JIVOTNIMY(Land_Transport):
+  pass
+class Space_Transport(Transport):
+  pass
