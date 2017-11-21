@@ -1,0 +1,13 @@
+def is_prime(n):
+    if type(n) != int:
+        print("NO")
+        return
+    elif n <= 1:
+        print("NO")
+        return
+    for divisor in range(2, int(n ** 0.5) + 1):
+        if n % divisor == 0:
+            print("NO")
+            return
+    print("YES")
+is_prime(int(input()))
