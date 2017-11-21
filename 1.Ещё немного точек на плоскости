@@ -1,0 +1,36 @@
+n = int(input())
+points=[]
+for i in range(n):
+    a,b=input().split()
+    a=int(a)
+    b=int(b)
+    points.append(a)
+    points.append(b)
+    if -abs(a)<b<abs(a) and a!=0:
+        print("(",a,", ",b,")",sep="")
+max=-10000
+min=10000
+ind1=0
+ind2=0
+for i in range(0,len(points),2):
+    if(points[i]>max):
+        max=points[i]
+        ind1=i
+    if(points[i]<min):
+        min=points[i]
+        ind2=i
+print("left: (",points[ind2],", ",points[ind2+1],")",sep="")
+print("right: (",points[ind1],", ",points[ind1+1],")",sep="")
+max=-10000
+min=10000
+ind1=0
+ind2=0
+for i in range(1,len(points),2):
+    if(points[i]>max):
+        max=points[i]
+        ind1=i
+    if(points[i]<min):
+        min=points[i]
+        ind2=i
+print("top: (",points[ind1-1],", ",points[ind1],")",sep="")
+print("bottom: (",points[ind2-1],", ",points[ind2],")",sep="")
