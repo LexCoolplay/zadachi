@@ -1,0 +1,22 @@
+hours=input().split()
+minutes=input().split()
+n=len(hours)
+n1=len(minutes)
+for i in range(n):
+    hours[i]=int(hours[i])
+for i in range(n1):
+    minutes[i]=int(minutes[i])
+minutes.sort()
+hours.sort()
+for i in range(n):
+    for j in range(n1):
+        if(int(hours[i])//10+int(hours[i])%10) == (int(minutes[j])//10+int(minutes[j])%10):
+            continue
+        if(int(hours[i])//10 == 0):
+            print("0",hours[i],":",sep="",end="")
+        else:
+            print(hours[i],":",sep="",end="")
+        if(int(minutes[j])//10 == 0):
+            print("0",minutes[j],sep="")
+        else:
+            print(minutes[j])
