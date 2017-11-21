@@ -1,0 +1,9 @@
+alf="а ка б зу в ру г джи д те е ку ё ку ж зу з з и ки й фу к ме л та м рин н то о мо п но р ши с ари т чи у мей ф лу х ри ц ми ч зи ш ли щ ни ъ д ы хе ь ксе э га ю до я ма"
+alf=alf.split()
+name=input()
+name=name.lower()
+for i in range(len(name)):
+    if(i==0):
+        print(alf[alf.index(name[i])+1].capitalize(),end="")
+    else:
+        print(alf[alf.index(name[i])+1],end="")
