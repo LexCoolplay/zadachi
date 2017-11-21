@@ -1,0 +1,20 @@
+from yandex_testing_lesson import strip_punctuation_ru
+def test():
+    test_data = [
+        ("фив","фив"),
+        (";Э.м-?м!,о':", "Эммо"),
+        ("", ""),
+        ('э/ма"',"эма"),
+        ("э  .  м, о", "э м о")
+    ]
+    fl=0
+    for a, res in test_data:
+        if(strip_punctuation_ru(a)==res):
+            fl=1
+        else:
+            fl=0
+    if(fl==1):
+        print("YES")
+    else:
+        print("NO")
+test()
