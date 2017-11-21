@@ -1,9 +1,0 @@
-import argparse
-
-parser=argparse.ArgumentParser()
-parser.add_argument("arguments",type=str,nargs='*')
-args=parser.parse_args()
-if(args.arguments):
-    print("\n".join(args.arguments))
-else:
-    print('no args')
