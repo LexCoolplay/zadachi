@@ -1,0 +1,25 @@
+from yandex_testing_lesson import is_prime
+def test():
+    test_data = [
+        (3,True),
+        (4, False),
+        (79, True),
+        (6, False),
+        (2, True),
+        (11, True)
+
+    ]
+    fl = 0
+    for a, res in test_data:
+        try:
+            if(is_prime(a)==res):
+                fl = 1
+            else:
+                raise Exception
+        except Exception:
+            print("NO",a,res)
+            fl = 0
+            break
+    if (fl == 1):
+        print("YES")
+test()
