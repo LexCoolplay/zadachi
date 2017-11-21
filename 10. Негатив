@@ -1,0 +1,10 @@
+with open("input.bmp",'rb') as file:
+    head = file.read(54)
+    data = file.read()
+with open("res.bmp",'wb') as file:
+    new_data=[]
+    for i in range(len(data)):
+        new_data.append(255-data[i])
+    new_data1 = bytes(new_data)
+    file.write(head)
+    file.write(new_data1)
