@@ -1,0 +1,16 @@
+import pytest
+from yandex_testing_lesson import count_chars
+def test_wrong_type(): 
+    with pytest.raises(TypeError): 
+        count_chars(42) 
+    with pytest.raises(TypeError): 
+        count_chars([1,2,3])            
+def test_first():
+    assert count_chars('abanaba') == {'a':4, 'b':2,'n':1}
+def test_second():
+    assert count_chars('awwweeeoi') =={'a':1,'w':3,'e':3,'o':1,'i':1}
+def test_third():
+    assert count_chars('') =={}
+
+if __name__ == '__main__':
+    pytest.main()
