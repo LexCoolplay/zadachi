@@ -14,21 +14,21 @@
 #include "LinkedList.h"
 
 LinkedList::LinkedList(int x) {
-    this->head=this;
-    this->value=value;
+    this->_value=x;
 }
 LinkedList::value(int x){
-    this->value=value;
+    this->_value=x;
+    return 0;
 }
 LinkedList::value(){
-    return this->value;
+    return this->_value;
 }
 LinkedList::append(int x){
     LinkedList* temp=this;
-    while(this->next){
-        temp=this->next;
+    while(this->_next){
+        temp=this->_next;
     }
-        this->next=new LinkedList(x);
+        this->_next=new LinkedList(x);
         
 }
 
