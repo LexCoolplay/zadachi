@@ -22,9 +22,8 @@ public:
     void value(int x);
     int value();
 private:
-    int value;
-    LinkedList* next;
-    LinkedList* head;
+    int _value;
+    LinkedList* _next = NULL;
 };
 
 #endif /* LINKEDLIST_H */
