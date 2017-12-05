@@ -1,0 +1,14 @@
+class Note:
+    def __init__(self, a, f=False):
+        if f==False:
+            self.a=a
+        elif a=="ре":
+            self.a="ре-э";
+        elif a=="соль":
+            self.a="со-оль"
+        elif a=="ля":
+            self.a="ля-а"
+        else:
+            self.a=a+"-"+a[-1]
+    def __str__(self):
+        return self.a
