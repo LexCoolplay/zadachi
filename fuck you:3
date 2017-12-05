@@ -1,0 +1,68 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+import java.util.HashMap; 
+import java.math.BigInteger;
+
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	Scanner in = new Scanner (System.in);
+		ArrayList a = new ArrayList();
+		ArrayList b = new ArrayList();
+		while(true){
+			int x = 0;
+			try{
+				x=in.nextInt();
+			}
+			catch (Exception e){
+				break;
+			}
+			if(a.indexOf(x) == -1){
+				a.add(x);
+				b.add(1);
+			}
+			else{
+				int index = a.indexOf(x);
+				int temp = (int) b.get(index);
+				b.set(index,temp+1);
+			}
+		}
+		int n=a.size();
+		for(int i = 0;i<n-1;i++){
+			for(int j = 0;j<n-i-1;j++){
+				int t = (int)a.get(j);
+				int t1 = (int)a.get(j+1);
+				int te = (int)b.get(j);
+				int te1 = (int)b.get(j+1);
+				if(t>t1){
+					a.set(j,t1);
+					a.set(j+1,t);
+					b.set(j,te1);
+					b.set(j+1,te);
+				}
+			}
+		}
+		int max = -1;
+		int it = 0;
+		for(int i = 0;i<b.size();i++){
+			if(max<(int)b.get(i)){
+				max = (int)b.get(i);
+			}
+		}
+		for(int i = 0;i<b.size();i++)
+			if((int)b.get(i) == max){
+				break;
+			}
+			else{
+				it+=(int)b.get(i);
+			}
+
+		System.out.print(it+" " + (it+max-1) );
+ 	}
+ }
