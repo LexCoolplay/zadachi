@@ -1,0 +1,72 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+import java.math.BigInteger;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner in = new Scanner (System.in);
+		ArrayList a = new ArrayList();
+		while(true){
+			BigInteger x = new BigInteger ("0");
+			try{
+				x=in.nextBigInteger();
+			}
+			catch (Exception e){
+				break;
+			}
+			if(a.indexOf(x) == -1){
+				a.add(x);
+				a.add(1);
+			}
+			else{
+				int index = a.indexOf(x);
+				int p = (int) a.get(index+1);
+				a.set(index+1,++p);
+			}
+		}
+		int max= -1;
+		for(int i =1;i<a.size();i+=2){
+			if(max < (int) a.get(i))
+				max = (int) a.get(i);
+		}
+		max = a.indexOf(max)-1; 
+		a.set(max,0);
+		BigInteger bi2 = new BigInteger("7");
+		BigInteger bi3 = new BigInteger("0");
+		BigInteger nol = new BigInteger("0");
+		BigInteger ten = new BigInteger("10");
+		BigInteger res = new BigInteger("0");
+
+
+
+		for(int i =0;i<a.size();i+=2){
+			BigInteger sumt = new BigInteger("0");
+			BigInteger bi1 = new BigInteger("0");
+			BigInteger temp = new BigInteger("0");
+			BigInteger sum = new BigInteger("0");
+			String ma = (a.get(i)).toString();
+			bi1 = bi1.add(new BigInteger (ma));
+			bi3 = bi1.mod(bi2);
+			temp = bi1;
+			while(!temp.equals(nol)){
+				BigInteger xyi = temp.mod(ten);
+				sumt = sumt.add(xyi);
+				temp = temp.divide(ten);
+			}
+
+			if((sumt.mod(bi2)).equals(nol)){
+				String mi = (a.get(i+1)).toString();
+				sum = sum.add(new BigInteger (mi));
+				sum = sum.multiply(bi1);
+				res = res.add(sum);
+			}
+		}
+		System.out.print(res);
+	}
+}
