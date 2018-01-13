@@ -1,0 +1,25 @@
+import pygame
+
+screen =pygame.display.set_mode()
+
+game_loop = True
+clock = pygame.time.Clock()
+circle_pos=None
+range = 10
+
+while game_loop:
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            game_loop = False
+        if e.type == pygame.MOUSEBUTTONDOWN:
+            circle_pos = e.pos
+            range = 10
+    screen.fill(pygame.Color(0,0,255))
+    range+=10*(clock.tick()/100)
+    if(circle_pos):
+        pygame.draw.circle(screen,pygame.Color(255,255,0),circle_pos,int(range))
+    pygame.display.update()
+
+
+
+pygame.quit()
