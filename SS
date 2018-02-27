@@ -1,0 +1,61 @@
+import pygame
+import requests
+import sys
+import os
+
+# Ищем город Якутск, ответ проим выдать в формате json.
+geocoder_request = "https://nominatim.openstreetmap.org/search?q=стадион спартак москва&format=json"
+geocoder_request1 = "https://nominatim.openstreetmap.org/search?q=москва&format=json"
+
+
+# Выполняем запрос.
+response = requests.get(geocoder_request)
+if response:
+  json_response = response.json()
+  lat = json_response[0]['lat']
+  lon = json_response[0]['lon']
+  lat1 = json_response[1]['lat']
+  lon1 = json_response[1]['lon']
+  lat2 = json_response[2]['lat']
+  lon2 = json_response[2]['lon']
+else:
+  print("Ошибка выполнения запроса:")
+  print(geocoder_request)
+  print("Http статус:", response.status_code, "(", response.reason, ")")
+
+response = None
+try:
+    map_request = "http://static-maps.yandex.ru/1.x/?ll=" + ','.join(map(str, (lon, lat))) + "&spn=0.02,0.02&l=map"
+    response = requests.get(map_request)
+
+    if not response:
+        print("Ошибка выполнения запроса:")
+        print(geocoder_request)
+        print("Http статус:", response.status_code, "(", response.reason, ")")
+        sys.exit(1)
+except:
+    print("Запрос не удалось выполнить. Проверьте наличие сети Интернет.")
+    sys.exit(1)
+
+# Запишем полученное изображение в файл.
+map_file = "map.png"
+try:
+    with open(map_file, "wb") as file:
+        file.write(response.content)
+except IOError as ex:
+    print("Ошибка записи временного файла:", ex)
+    sys.exit(2)
+
+# Инициализируем pygame
+pygame.init()
+screen = pygame.display.set_mode((600, 450))
+# Рисуем картинку, загружаемую из только что созданного файла.
+screen.blit(pygame.image.load(map_file), (0, 0))
+# Переключаем экран и ждем закрытия окна.
+pygame.display.flip()
+while pygame.event.wait().type != pygame.QUIT:
+    pass
+pygame.quit()
+
+# Удаляем за собой файл с изображением.
+os.remove(map_file)
